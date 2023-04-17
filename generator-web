@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Album Rating Generator</title>
+  </head>
+  <body>
+    <h1>Album Rating Generator</h1>
+    <form>
+      <label for="directing">Directing:</label>
+      <input type="number" id="directing" name="directing" min="1" max="10"><br><br>
+
+      <label for="acting">Acting:</label>
+      <input type="number" id="acting" name="acting" min="1" max="10"><br><br>
+
+      <label for="editing">Editing:</label>
+      <input type="number" id="editing" name="editing" min="1" max="10"><br><br>
+
+      <label for="writing">Writing:</label>
+      <input type="number" id="writing" name="writing" min="1" max="10"><br><br>
+
+      <label for="cinematography">Cinematography:</label>
+      <input type="number" id="cinematography" name="cinematography" min="1" max="10"><br><br>
+
+      <label for="sound">Sound:</label>
+      <input type="number" id="sound" name="sound" min="1" max="10"><br><br>
+
+      <label for="production">Production:</label>
+      <input type="number" id="production" name="production" min="1" max="10"><br><br>
+
+      <label for="entertainment_value">Entertainment Value:</label>
+      <input type="number" id="entertainment_value" name="entertainment_value" min="1" max="10"><br><br>
+
+      <label for="relevance">Relevance:</label>
+      <input type="number" id="relevance" name="relevance" min="1" max="10"><br><br>
+
+      <label for="x_factor">X-Factor:</label>
+      <input type="number" id="x_factor" name="x_factor" min="1" max="10"><br><br>
+
+      <input type="button" value="Generate Rating" onclick="generateRating()">
+    </form>
+
+    <div id="rating"></div>
+
+    <script>
+      function generateRating() {
+        const directing = parseInt(document.getElementById("directing").value);
+        const acting = parseInt(document.getElementById("acting").value);
+        const editing = parseInt(document.getElementById("editing").value);
+        const writing = parseInt(document.getElementById("writing").value);
+        const cinematography = parseInt(document.getElementById("cinematography").value);
+        const sound = parseInt(document.getElementById("sound").value);
+        const production = parseInt(document.getElementById("production").value);
+        const entertainment_value = parseInt(document.getElementById("entertainment_value").value);
+        const relevance = parseInt(document.getElementById("relevance").value);
+        const x_factor = parseInt(document.getElementById("x_factor").value);
+
+        const category_scores = [directing, acting, editing, writing, cinematography, sound, production, entertainment_value, relevance, x_factor];
+
+        const total_score = category_scores.reduce((accumulator, currentValue) => accumulator + currentValue);
+        let rating = null;
+        if (total_score >= 93) {
+          rating = "5 stars";
+        } else if (total_score >= 86) {
+          rating = "4.5 stars";
+        } else if (total_score >= 81) {
+          rating = "4 stars";
